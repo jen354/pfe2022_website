@@ -90,8 +90,30 @@
                                             <div class="row no-gutters align-items-center">
                                                 <div class="col mr-2">
                                                     <div class="text-xs font-weight-bold text-temp text-uppercase mb-1">
-                                                        Température (Celcius)</div>
-                                                    <div class="h5 mb-0 font-weight-bold text-gray-800">Enter temperature</div>
+                                                        Température (Celcius)
+                                                    </div>
+                                                    <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                                    <!--getting information for the temperature-->    
+                                                    <?php
+
+                                                        //chosing the datasbase
+                                                        $db = new SQLite3('IoT.db');
+                                                        //selecting table desired in db  
+                                                        $sql_temp = "SELECT * FROM IoT_temp ORDER BY rowid DESC LIMIT 1";
+                                                        $result_temp = $db->query($sql_temp);
+                                                        //finding the inforamation for the temp
+                                                        while($row = $result_temp->fetchArray(SQLITE3_ASSOC)){
+
+                                                        $sensorID_temp = $row["sensorID"];
+                                                        $temperature = $row["temperature"];
+                                                        $time_temp = $row["current_time"];
+
+                                                        }
+
+                                                        echo"$temperature";
+
+                                                    ?>
+                                                    </div>
                                                 </div>
                                                 <div class="col-auto">
                                                     <i class="fas fa-temperature-high fa-2x text-gray-300"></i>
@@ -108,8 +130,34 @@
                                             <div class="row no-gutters align-items-center">
                                                 <div class="col mr-2">
                                                     <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                                        Humidité (%)</div>
-                                                    <div class="h5 mb-0 font-weight-bold text-gray-800">Enter humidity</div>
+
+                                                        Humidité (%)
+                                                    
+                                                    </div>
+
+                                                    <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                                        <!--getting info for humidity-->
+                                                        <?php
+                                                            //chosing the datasbase
+                                                            $db = new SQLite3('IoT.db');
+                                                            
+                                                            //selecting table desired in db  
+                                                            $sql_hum = "SELECT * FROM IoT_hum ORDER BY rowid DESC LIMIT 1";
+                                                            $result_hum = $db->query($sql_hum);
+                                                            //finding the inforamation for the humidity
+                                                            while($row = $result_hum->fetchArray(SQLITE3_ASSOC)){
+                                
+                                                            $sensorID_hum = $row["sensorID"];
+                                                            $humidity = $row["humidity"];
+                                                            $time = $row["current_time"];
+
+	                                                        }
+                                                            
+                                                            echo"$humidity";
+
+                                                        ?>
+                                                    
+                                                    </div>
                                                 </div>
                                                 <div class="col-auto">
                                                     <i class="bi bi-droplet text-gray-300 fa-2x"></i>
@@ -126,9 +174,34 @@
                                             <div class="row no-gutters align-items-center">
                                                 <div class="col mr-2">
                                                     <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
+
                                                         Luminosité (nm)
+
                                                     </div>
-                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">Enter light</div>
+                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">
+                                                            <!--getting info for light-->
+                                                            <?php
+
+                                                                //chosing the datasbase
+                                                                $db = new SQLite3('IoT.db');
+
+                                                                //selecting table desired in db 
+                                                                $sql_light = "SELECT * FROM IoT_light ORDER BY rowid DESC LIMIT 1";
+                                                                $result_light = $db->query($sql_light);
+                                                                //finding the inforamation for the co2
+                                                                while($row = $result_light->fetchArray(SQLITE3_ASSOC)){
+
+                                                                $sensorID_light = $row["sensorID"];
+                                                                $light = $row["light"];
+                                                                $time_light = $row["current_time"];
+
+                                                                }
+
+                                                                echo"$light";
+
+                                                            ?>
+                                                    
+                                                    </div>
                                                 </div>
                                                 <div class="col-auto">
                                                     <i class="fas fa-sun fa-2x text-gray-300"></i>
@@ -145,8 +218,36 @@
                                             <div class="row no-gutters align-items-center">
                                                 <div class="col mr-2">
                                                     <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                                                        CO2 (ppm)</div>
-                                                    <div class="h5 mb-0 font-weight-bold text-gray-800">Enter Co2</div>
+
+                                                        CO2 (ppm)
+                                                    
+                                                    </div>
+                                                    <div class="h5 mb-0 font-weight-bold text-gray-800">
+
+                                                        <!--getting info for co2-->
+                                                        <?php
+
+                                                            //chosing the datasbase
+                                                            $db = new SQLite3('IoT.db');
+
+                                                            //selecting table desired in db 
+                                                            $sql_co2 = "SELECT * FROM IoT_co2 ORDER BY rowid DESC LIMIT 1";
+                                                            $result_co2 = $db->query($sql_co2);
+                                                            //finding the inforamation for the co2
+                                                            while($row = $result_co2->fetchArray(SQLITE3_ASSOC)){
+
+                                                            $sensorID_co2 = $row["sensorID"];
+                                                            $co2 = $row["co2"];
+                                                            $time_co2=$row["current_time"];
+
+                                                            }
+
+                                                            echo"$co2";
+
+                                                        ?>
+                                                    
+                                                    
+                                                    </div>
                                                 </div>
                                                 <div class="col-auto">
                                                     <i class="bi bi-wind fa-2x text-gray-300"></i>
